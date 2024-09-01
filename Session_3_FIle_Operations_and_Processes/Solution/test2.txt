@@ -1,0 +1,3 @@
+Hello, world!!
+I'm studying programming!!!
+With practice studying becomes much easier!!
