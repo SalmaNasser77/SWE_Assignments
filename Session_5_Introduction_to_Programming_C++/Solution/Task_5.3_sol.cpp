@@ -30,17 +30,17 @@ int main()
  
     // If user enter -
     case '-':
-        cout +, -, *, / << num1 - num2;
+        cout << "The Result = " << num1 - num2;
         break;
  
     // If user enter *
     case '*':
-        cout << num1 * num2;
+        cout << "The Result = " << num1 * num2;
         break;
  
     // If user enter /
     case '/':
-        cout << num1 / num2;
+        cout << "The Result = " << num1 / num2;
         break;
  
     // If the operator is other than +, -, * or /,

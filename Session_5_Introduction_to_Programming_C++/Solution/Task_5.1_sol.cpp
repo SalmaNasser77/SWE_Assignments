@@ -1,34 +1,19 @@
+#include <iostream>
 
-// C++ program to find the size of int, char, 
-// float and double data types 
-#include <iostream> 
-using namespace std; 
-  
-int main() 
-{ 
-    int integerType; 
-    char charType; 
-    float floatType; 
-    double doubleType; 
-  
-    // Calculate and Print 
-    // the size of integer type 
-    cout << "Size of int is: " << sizeof(integerType) 
-         << "\n"; 
-  
-    // Calculate and Print 
-    // the size of doubleType 
-    cout << "Size of char is: " << sizeof(charType) << "\n"; 
-  
-    // Calculate and Print 
-    // the size of charType 
-    cout << "Size of float is: " << sizeof(floatType) 
-         << "\n"; 
-  
-    // Calculate and Print 
-    // the size of floatType 
-    cout << "Size of double is: " << sizeof(doubleType) 
-         << "\n"; 
-  
-    return 0; 
+using namespace std;
+
+int main()
+{
+    string name;     // A variable to store the name of the user
+    cout << "Please Enter your name\n";   // promoting the user to enter their name
+    cin >> name;   // Taking the name of the user as an input 
+
+    int age;  // A variable to store the age
+    cout << "Please Enter your age\n";   // promoting the user to enter their name
+    cin >> age;   // taking the age as an input from the user
+
+    cout << "Hello " << name << ", are you " << age << " years old?\n";  // greeting the user with their name and age
+
+
+    return 0;
 }

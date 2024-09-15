@@ -1,30 +1,24 @@
-#include <iostream> // Preprocessor directive to include the input/output stream header file
+#include <iostream> // Include the input/output stream library
+using namespace std; // Using standard namespace
 
-using namespace std; // Using the standard namespace to avoid writing std::
-
-int main() // Start of the main function
+int main() // Main function where the execution of the program starts
 {
-    int num1, ctr = 0; // Declaration of integer variables 'num1' and 'ctr', 'ctr' initialized to 0
+    int i, j, rows; // Declare integer variables i, j, and rows
 
-    cout << "\n\n Check whether a number is prime or not:\n"; // Display a message indicating the purpose
-	cout << "--------------------------------------------\n"; // Display a separator line
-	cout << " Input a number to check prime or not: "; // Prompting the user to input a number
-	cin >> num1; // Reading the input number entered by the user
+    // Display message asking for input
+    cout << "\n\n Display the pattern using number starting from 1:\n";
+    cout << "------------------------------------------------------\n";
+    cout << " Input number of rows: ";
+    cin >> rows; // Read input for the number of rows from the user
 
-    for (int a = 1; a <= num1; a++) // Start of a 'for' loop from 1 to the input number 'num1'
+    // Loop to print the pattern using numbers starting from 1
+    for (i = 1; i <= rows; i++) // Loop for the number of rows
     {
-        if (num1 % a == 0) // Check if 'num1' is divisible by 'a' without any remainder
+        for (j = 1; j <= i; j++) // Nested loop for printing numbers in each row
         {
-            ctr++; // Increment 'ctr' when 'num1' is divisible by 'a'
+            cout << j; // Print the current value of 'j' (numbers starting from 1)
         }
-    }
-
-    if (ctr == 2) // Check if 'ctr' is equal to 2 (prime numbers have only two factors: 1 and the number itself)
-    {
-        cout << " The entered number is a prime number. \n"; // Display a message indicating that the number is prime
-    }
-    else {
-        cout << " The number you entered is not a prime number. \n"; // Display a message indicating that the number is not prime
+        cout << endl; // Move to the next line after each row is printed
     }
     return 0;
 }

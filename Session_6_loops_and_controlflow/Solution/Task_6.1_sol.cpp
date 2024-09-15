@@ -1,24 +1,21 @@
-#include <iostream> // Include the input/output stream library
-using namespace std; // Using standard namespace
+#include <iostream>   // Include the standard input/output header file.
 
-int main() // Main function where the execution of the program starts
+using namespace std;
+
+int main()
 {
-    int i, j, rows; // Declare integer variables i, j, and rows
+    int chk_year;   // Declare an integer variable 'chk_year'.
 
-    // Display message asking for input
-    cout << "\n\n Display the pattern using number starting from 1:\n";
-    cout << "------------------------------------------------------\n";
-    cout << " Input number of rows: ";
-    cin >> rows; // Read input for the number of rows from the user
+    cout << "Input a year :\n";   // Prompt the user to input a year.
+    cin >>  chk_year;   // Read and store the user's input in 'chk_year'.
+    if ((chk_year % 400) == 0)   // Check if 'chk_year' is divisible by 400 with no remainder.
+        cout << chk_year << " is a leap year.\n";   // Print a message indicating that 'chk_year' is a leap year.
+    else if ((chk_year % 100) == 0)   // Check if 'chk_year' is divisible by 100 with no remainder.
+        cout << chk_year << " is not a leap year.\n";   // Print a message indicating that 'chk_year' is not a leap year.
+    else if ((chk_year % 4) == 0)   // Check if 'chk_year' is divisible by 4 with no remainder.
+        cout << chk_year <<" is a leap year.\n";   // Print a message indicating that 'chk_year' is a leap year.
+    else
+        cout << chk_year << " is not a leap year \n";   // Print a message indicating that 'chk_year' is not a leap year.
 
-    // Loop to print the pattern using numbers starting from 1
-    for (i = 1; i <= rows; i++) // Loop for the number of rows
-    {
-        for (j = 1; j <= i; j++) // Nested loop for printing numbers in each row
-        {
-            cout << j; // Print the current value of 'j' (numbers starting from 1)
-        }
-        cout << endl; // Move to the next line after each row is printed
-    }
     return 0;
 }
