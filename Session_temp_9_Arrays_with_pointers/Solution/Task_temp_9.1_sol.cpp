@@ -1,24 +1,34 @@
 #include <iostream>
+using namespace std;
+
+// Function to swap the values of two integers using pointers
+void swap(int *a, int *b) {
+    int temp = *a; // Store the value pointed to by a in a temporary variable
+    *a = *b;       // Assign the value pointed to by b to the location pointed to by a
+    *b = temp;     // Assign the temporary variable's value to the location pointed to by b
+}
 
 int main() {
-    // Step 1: Declare an integer variable and initialize it
-    int number = 10;
-    
-    // Step 2: Declare a raw pointer that points to the integer variable
-    int* ptr = &number;
-    
-    // Step 3: Print the size of the pointer itself
-    std::cout << "Size of the pointer (in bytes): " << sizeof(ptr) << std::endl;
-    
-    // Step 4: Print the size of the integer variable
-    std::cout << "Size of the integer variable (in bytes): " << sizeof(number) << std::endl;
-    
-    // Step 5: Use the pointer to modify the value of the integer variable
-    *ptr = 20;
-    
-    // Step 6: Print the value of the integer variable
-    std::cout << "Value of number: " << number << std::endl;
-    std::cout << "Value of number through pointer: " << *ptr << std::endl;
-    
+    int x, y; // Variables to hold the values input by the user
+
+    // Prompt user to enter two integers
+    cout << "Enter the first integer: ";
+    cin >> x;
+    cout << "Enter the second integer: ";
+    cin >> y;
+
+    // Display the values before swapping
+    cout << "Before swapping:" << endl;
+    cout << "First integer: " << x << endl;
+    cout << "Second integer: " << y << endl;
+
+    // Call the swap function with the addresses of x and y
+    swap(&x, &y);
+
+    // Display the values after swapping
+    cout << "After swapping:" << endl;
+    cout << "First integer: " << x << endl;
+    cout << "Second integer: " << y << endl;
+
     return 0;
 }

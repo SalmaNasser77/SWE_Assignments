@@ -1,26 +1,27 @@
 #include <iostream>
-
-// Function that takes a pointer to an array and its size
-void printArraySize(int* arr, int size) {
-    // Inside the function, sizeof(arr) gives the size of the pointer
-    std::cout << "Inside function - Size of arr (pointer): " << sizeof(arr) << " bytes" << std::endl;
-    std::cout << "Size of a single element: " << sizeof(arr[0]) << " bytes" << std::endl;
-    std::cout << "Number of elements (passed as parameter): " << size << std::endl;
-}
+using namespace std;
 
 int main() {
-    // Declare a static array of integers and initialize it
-    int arr[] = {10, 20, 30, 40, 50};
-    
-    // Calculate the number of elements
-    int size = sizeof(arr) / sizeof(arr[0]);
-    
-    // Print the size of the array and its elements in main
-    std::cout << "Outside function - Size of arr: " << sizeof(arr) << " bytes" << std::endl;
-    std::cout << "Size of a single element: " << sizeof(arr[0]) << " bytes" << std::endl;
-    
-    // Pass the array and its size to the function
-    printArraySize(arr, size);
-    
+    const int SIZE = 5; // Define the size of the array
+    int arr[SIZE];      // Array to hold the integers
+    int sum = 0;        // Variable to store the sum of the array elements
+
+    // Prompt user to enter the elements of the array
+    cout << "Enter " << SIZE << " integers:" << endl;
+    for (int i = 0; i < SIZE; i++) {
+        cin >> arr[i]; // Input elements into the array
+    }
+
+    // Pointer to the first element of the array
+    int* ptr = arr;
+
+    // Calculate the sum of the array elements using pointer arithmetic
+    for (int i = 0; i < SIZE; i++) {
+        sum += *(ptr + i); // Access the array element using pointer arithmetic
+    }
+
+    // Display the result
+    cout << "Sum of the array elements: " << sum << endl;
+
     return 0;
 }
