@@ -1,57 +1,39 @@
 #include <iostream>
+using namespace std;
 
-namespace SavingsAccount {
-    double balance = 0.0;
-
-    void createAccount(double initialBalance) {
-        balance = initialBalance;
-        std::cout << "Savings account created with balance: $" << balance << std::endl;
-    }
-    
-    void addInterest(double rate) {
-        balance += balance * rate / 100.0;
-    }
-    
-    double getBalance() {
-        return balance;
+// Function to find the maximum of two integers
+int maxOfTwo(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
     }
 }
 
-namespace CheckingAccount {
-    double balance = 0.0;
-
-    void createAccount(double initialBalance) {
-        balance = initialBalance;
-        std::cout << "Checking account created with balance: $" << balance << std::endl;
-    }
-    
-    void applyFee(double fee) {
-        balance -= fee;
-        if (balance < 0) {
-            std::cerr << "Warning: Overdraft! Balance is negative: $" << balance << std::endl;
-        }
-    }
-    
-    double getBalance() {
-        return balance;
-    }
+// Function to find the maximum of three integers using the maxOfTwo function
+int maxOfThree(int a, int b, int c) {
+    // Find the maximum of the first two numbers
+    int maxAB = maxOfTwo(a, b);
+    // Find the maximum of the result and the third number
+    return maxOfTwo(maxAB, c);
 }
 
 int main() {
-    
-    // Create and manage savings account
-    SavingsAccount::createAccount(1000.00);
-    std::cout << "Savings Account Balance: $" << SavingsAccount::getBalance() << std::endl;
-    
-    SavingsAccount::addInterest(5.0); // Add 5% interest
-    std::cout << "Savings Account Balance after interest: $" << SavingsAccount::getBalance() << std::endl;
-    
-    // Create and manage checking account
-    CheckingAccount::createAccount(500.00);
-    std::cout << "Checking Account Balance: $" << CheckingAccount::getBalance() << std::endl;
-    
-    CheckingAccount::applyFee(25.00); // Apply a $25 fee
-    std::cout << "Checking Account Balance after fee: $" << CheckingAccount::getBalance() << std::endl;
-    
+    int x, y, z;
+
+    // Prompt user to enter three integers
+    cout << "Enter the first integer: ";
+    cin >> x;
+    cout << "Enter the second integer: ";
+    cin >> y;
+    cout << "Enter the third integer: ";
+    cin >> z;
+
+    // Find the maximum of the three integers
+    int maxNumber = maxOfThree(x, y, z);
+
+    // Display the result
+    cout << "The maximum of " << x << ", " << y << ", and " << z << " is: " << maxNumber << endl;
+
     return 0;
 }
