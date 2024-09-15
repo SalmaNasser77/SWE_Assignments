@@ -1,55 +1,49 @@
-// link to the problem: https://www.hackerearth.com/problem/algorithm/range-sum-4/
+#include<iostream> // Header file for input/output stream
+#include<climits> // Header file for limits of integral types
+using namespace std; // Using the standard namespace
 
+void three_largest(int arr[], int arr_size) // Function definition to find three largest elements in the array
+{
+    int i, first, second, third; // Declaration of integer variables
 
-#include <iostream>
-using namespace std;
+    if (arr_size < 3) // Checking if the array has less than 3 elements
+    {
+        cout << "Invalid Input"; // Output message for invalid input
+    }
 
-const int  N  = 100000 + 7;  //defining the maximum size of an array
+    third = first = second = INT_MIN; // Initializing first, second, and third as minimum integer value
+    for (i = 0; i < arr_size; i ++) // Loop to find three largest elements in the array
+    {
+        if (arr[i] > first) // Checking if current element is larger than the first largest element
+        {
+            third = second; // Updating third largest element
+            second = first; // Updating second largest element
+            first = arr[i]; // Updating first largest element
+        }
+        else if (arr[i] > second) // Checking if current element is larger than the second largest element
+        {
+            third = second; // Updating third largest element
+            second = arr[i]; // Updating second largest element
+        }
+        else if (arr[i] > third) // Checking if current element is larger than the third largest element
+        {
+            third = arr[i]; // Updating third largest element
+        }
+    }
 
-int arr[N];    // the array I'll store the integers in
-long long prefix[N];   // the array I'll calculate the prefix in 
-
-int main() {
-	ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);  // this line makes taking the input and outputing faster "makes cin and cout faster"
-	int t;   // to store the number of test cases
-	cin >> t; 
-	while(t--) 
-	{
-		int n; // storing the number of the elements in this test case
-		cin >> n;
-
-		for(int i = 0; i < n; i++)
-		{
-			cin >> arr[i];  // reading the elements from the user
-		}
-                // calculating the prefix sum of the array
-		for(int i = 0; i < n; i++)
-		{
-			if(i == 0) // checkes if it's the first element or not
-			{
-				prefix[i] = arr[i];
-			}
-			else
-			{
-				prefix[i] = ((long long)arr[i] + prefix[i - 1]);  // calculating the prefix[i] by adding the arr[i] to the periously calculated sum
-			}
-		}
-
-
-		int q; // for storing the number of queries
-		cin >> q;
-		while(q--)
-		{
-			int l, r; // for storing the query range the user is asking for
-			cin >> l >> r;
-			l--, r--; // since the range is between (1 and n) we must make it zero indexed
-
-			long long ans = prefix[r]; // the answer is the sum of the array up till arr[l]
-			if(l != 0) ans -= prefix[l - 1]; // but if the start range isn't the first element we need to subtract what is less that arr[l] 
-
-			cout << ans << endl; // outputing the answer
-		}
-
-
-	}
+    cout << "\nThree largest elements are: " << first << ", " << second << ", " << third << endl; // Output three largest elements
 }
+
+int main() // Main function where the program execution starts
+{
+    int nums[] = {7, 12, 9, 15, 19, 32, 56, 70, 70}; // Declaration and initialization of an integer array
+    int n = sizeof(nums)/sizeof(nums[0]); // Determining the number of elements in the array
+
+    cout << "Original array: "; // Output message indicating the original array is being displayed
+    for (int i=0; i < n; i++) 
+        cout << nums[i] <<" "; // Output each element of the array
+
+    three_largest(nums, n); // Calling function to find three largest elements in the array
+    return 0; // Return statement indicating successful execution and program termination
+}
+
