@@ -1,45 +1,57 @@
-#include<iostream> // Header file for input/output stream
-using namespace std; // Using the standard namespace
+/*
+the general idea:
 
-// Function to find the most occurred number(s) in the array
-void most_occurred_number(int nums[], int size)
-{
-    int max_count = 0; // Variable to track the maximum occurrence count
-    cout << "\nMost occurred number: "; // Output message to indicate displaying the most occurred number(s)
+we have 2 arrays,
+arr --> for storing the actual values of the array
+freq --> for counting the frequency of each value
 
-    // Loop to count occurrences and find the maximum occurrence count
-    for (int i = 0; i < size; i++)
-    {
-        int count = 1; // Counter to track the occurrence of each number
-        for (int j = i + 1; j < size; j++)
-            if (nums[i] == nums[j]) // Checking if the element at index 'i' is equal to the element at index 'j'
-                count++; // Incrementing the counter for the same elements
+we index in the freq array with the value itself for example
+if this is the input: 1 1 1 1 6 7 7 7 10
+the arr will contain: 1 1 1 1 6 7 7 7 10
+the freq will contain: 0 4 0 0 0 0 1 3 0 0 1
+indecies:              0 1 2 3 4 5 6 7 8 9 10
 
-        if (count > max_count) // Checking if the current count is greater than the maximum count
-            max_count = count; // Updating the maximum count with the new higher count
-    }
+notice at index 1, the freq array have 4 --> which is the number of it's occurrences in the original array
 
-    // Loop to output the number(s) with the maximum occurrence count
-    for (int i = 0; i < size; i++)
-    {
-        int count = 1; // Counter to track the occurrence of each number
-        for (int j = i + 1; j < size; j++)
-            if (nums[i] == nums[j]) // Checking if the element at index 'i' is equal to the element at index 'j'
-                count++; // Incrementing the counter for the same elements
+*/
 
-        if (count == max_count) // Checking if the current count is equal to the maximum count
-            cout << nums[i] << endl; // Output the number(s) with the maximum occurrence count
-    }
-}
+#include<iostream>
+#include<array>
+
+using namespace std;
+
+const int N = 100000;    // the maximum value the user can enter in the array, because we will be indexing with values 
 
 int main()
 {
-    int nums[] = {4, 5, 9, 12, 9, 22, 45, 7}; // Declaration and initialization of an integer array
-    int n = sizeof(nums) / sizeof(nums[0]); // Calculating the number of elements in the array
-    cout << "Original array: "; // Output message indicating the original array is being displayed
-    for (int i = 0; i < n; i++) 
-        cout << nums[i] << " "; // Output each element of the array
+    array<int, N> arr, freq = {0};
+    int n;
 
-    most_occurred_number(nums, n); // Calling the function to find the most occurred number(s)
+    cout << "Please enter the number of elements\n";
+    cin >> n;
+
+    cout << "Please Enter the values in the array\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int max_number = -1, ans;  // max number stores the maximum frequency "number of occurance", while ans holds the value itself that have the maximum frequency
+    for(int i = 0; i < n; i++)
+    {
+        freq[arr[i]]++;    // we are indexing with the array value and increasing it's frequency by 1
+
+        if(freq[arr[i]] > max_number)
+        {
+            max_number = freq[arr[i]]; // we are storing the maximum frequency so far
+            ans = arr[i];  // we are storing the actual value that had that maximum frequency
+        }
+    }
+
+    cout << "The most occcured value = " << ans << endl;
+
+
+
     return 0;
 }
